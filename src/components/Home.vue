@@ -1,9 +1,8 @@
 <template>
   <div>Hello from home</div>
-  <div>Current count value is: {{ counterStore.currentValue }}</div>
   <div>
-    <button @click="counterStore.increment">Increment</button>
-    <button @click="counterStore.decrement">Decrement</button>
+    <div>Current active filter {{ counterStore.filter }}</div>
+    <button @click="toggleFilter">Toggle Filter</button>
   </div>
   <router-link to="/warning">Go to warning screen</router-link>
 </template>
@@ -15,7 +14,15 @@ import useCounterStore from '../stores/counterStore';
 export default defineComponent({
   setup() {
     const counterStore = useCounterStore();
-    return { counterStore };
+
+    const toggleFilter = () => {
+      if (counterStore.filter === 'done') {
+        counterStore.filter = 'notDone';
+      } else {
+        counterStore.filter = 'done';
+      }
+    };
+    return { counterStore, toggleFilter };
   },
 });
 </script>

@@ -3,16 +3,8 @@ import { defineStore } from 'pinia';
 const useCounterStore = defineStore({
   id: 'counterStore',
   state: () => ({
-    currentValue: 0,
+    filter: 'done',
   }),
-  actions: {
-    increment() {
-      this.currentValue++;
-    },
-    decrement() {
-      this.currentValue--;
-    },
-  },
 });
 
 export default useCounterStore;
